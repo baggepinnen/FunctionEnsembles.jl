@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/baggepinnen/FunctionEnsembles.jl.svg?branch=master)](https://travis-ci.org/baggepinnen/FunctionEnsembles.jl)
 
+A small package for working with vectors of functions and make them behave as a single function that returns a vector of results.
+
 ```julia
 using FunctionEnsembles
 
