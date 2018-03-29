@@ -1,4 +1,7 @@
 module FunctionEnsembles
+
+export Ensemble, @ensemble, @functionfirst
+
 using Lazy
 struct Ensemble <: Function
     funs::Vector{Function}
@@ -19,12 +22,18 @@ function (e::Ensemble)(op::Function, v0, args...; kwargs...)
     reduce(op, v0, f(args...; kwargs...) for f in e.funs)
 end
 
-
 macro ensemble(e)
     @assert e isa Expr "Call syntax: @ensemble v(args...) where v::Vector{Function}"
-    @assert e.head == :call  "Call syntax: @ensemble v(args...) where v::Vector{Function}"
-    quote
-        Ensemble($(esc(e.args[1])))($(esc(e.args[2:end]...)))
+    if e.head == :call
+        quote
+            Ensemble($(esc(e.args[1])))($(esc(e.args[2:end]...)))
+        end
+    elseif e.head == :(=)
+        quote
+            $(esc(e.args[1])) = Ensemble($(esc(e.args[2].args[1])))($(esc(e.args[2].args[2:end]...)))
+        end
+    else
+        error("Call syntax: @ensemble v(args...) where v::Vector{Function}")
     end
 end
 

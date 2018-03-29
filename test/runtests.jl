@@ -8,6 +8,8 @@ e = Ensemble(v)
 
 @test e(1) == @ensemble(v(1)) == @ensemble([sin,cos](1)) == [v[1](1), v[2](1)] # These are all equivalent
 @test @ensemble(e(1)) == e(1)
+@ensemble gg = [sin,cos](1)
+@test gg == e(1)
 
 @test e(+,0,1) == sum(e(1)) # Works like reduce
 
