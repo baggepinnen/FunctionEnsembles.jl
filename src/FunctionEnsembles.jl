@@ -3,8 +3,8 @@ module FunctionEnsembles
 export Ensemble, @ensemble, @functionfirst
 
 using Lazy
-struct Ensemble <: Function
-    funs::Vector{Function}
+struct Ensemble{T}
+    funs::Vector{T}
 end
 Ensemble(e::Ensemble) = e
 
