@@ -1,2 +1,7 @@
+name = "FunctionEnsembles"
+version = "0.0.0"
+author = ["Fredrik Bagge Carlson <baggepinnen@gmail.com>"]
+uuid = "d0720a9b-0dfa-5cb0-9529-0dbaa1fcaac1"
+
 [deps]
 Lazy = "50d2b5c4-7a5e-59d5-8109-a42b560f39c0"

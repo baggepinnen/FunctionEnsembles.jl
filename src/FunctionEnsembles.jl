@@ -9,7 +9,7 @@ end
 Ensemble(e::Ensemble) = e
 
 Base.getindex(e::Ensemble, inds...) = e.funs[inds...]
-@forward Ensemble.funs Base.length, Base.size, Base.isempty, Base.getindex, Base.setindex!, Base.push!, Base.deleteat!, Base.insert!, Base.prepend!, Base.start, Base.next, Base.done
+@forward Ensemble.funs Base.length, Base.size, Base.isempty, Base.getindex, Base.setindex!, Base.push!, Base.deleteat!, Base.insert!, Base.prepend!, Base.iterate
 
 
 function (e::Ensemble)(args...; kwargs...)
